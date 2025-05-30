@@ -372,10 +372,10 @@ function getWorkflowRuns() {
             response = yield octokit.rest.actions.listWorkflowRuns(Object.assign({ owner: config.owner, repo: config.repo, workflow_id: config.workflow }, (branchName
                 ? {
                     branch: branchName,
-                    per_page: 5
+                    per_page: 100
                 }
                 : {
-                    per_page: 10
+                    per_page: 100
                 })));
             status = response.status;
         }
@@ -388,7 +388,7 @@ function getWorkflowRuns() {
                 repo: config.repo,
                 branch: branchName,
                 event: action_1.DispatchMethod.RepositoryDispatch,
-                per_page: 5
+                per_page: 100
             });
             status = response.status;
         }
