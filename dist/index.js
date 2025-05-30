@@ -211,7 +211,10 @@ function getBackoffOptions(config) {
     return {
         timeMultiple: config.timeMultiple,
         numOfAttempts: config.maxAttempts,
-        startingDelay: config.startingDelay
+        startingDelay: config.startingDelay,
+        jitter: "full",
+        /* eslint-disable  @typescript-eslint/no-explicit-any */
+        retry: (e, attemptNumber) => { core.info(`Attempt ${attemptNumber}: got error ${e}`); return true; }
     };
 }
 exports.getBackoffOptions = getBackoffOptions;
@@ -483,7 +486,9 @@ function run() {
             core.info(`🔄 Exponential backoff parameters:
     starting-delay: ${backoffOptions.startingDelay}
     max-attempts: ${backoffOptions.numOfAttempts}
-    time-multiple: ${backoffOptions.timeMultiple}`);
+    time-multiple: ${backoffOptions.timeMultiple}
+    jitter: ${backoffOptions.jitter}
+    `);
             // Get the workflow ID if give a string
             if (typeof config.workflow === 'string') {
                 const workflowFileName = config.workflow;
