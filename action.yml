@@ -1,4 +1,4 @@
-name: 'Dispatch Workflow'
+name: 'Dispatch Workflow™'
 description: 'A GitHub action to dispatch a remote GitHub workflow and optionally retrieve its information'
 branding:
   icon: chevrons-right
