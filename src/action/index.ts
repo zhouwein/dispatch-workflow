@@ -170,7 +170,8 @@ export function getBackoffOptions(config: ActionConfig): BackoffOptions {
     numOfAttempts: config.maxAttempts,
     startingDelay: config.startingDelay,
     jitter: "full",
-    retry: (e: any, attemptNumber: number) => { console.log(`Attempt ${attemptNumber}: got error ${e}`) ; return true;}
+    /* eslint-disable  @typescript-eslint/no-explicit-any */
+    retry: (e: any, attemptNumber: number) => { core.info(`Attempt ${attemptNumber}: got error ${e}`) ; return true;}
   }
 }
 

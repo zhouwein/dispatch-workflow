@@ -22,7 +22,9 @@ async function run(): Promise<void> {
     core.info(`🔄 Exponential backoff parameters:
     starting-delay: ${backoffOptions.startingDelay}
     max-attempts: ${backoffOptions.numOfAttempts}
-    time-multiple: ${backoffOptions.timeMultiple}`)
+    time-multiple: ${backoffOptions.timeMultiple}
+    jitter: ${backoffOptions.jitter}
+    `)
 
     // Get the workflow ID if give a string
     if (typeof config.workflow === 'string') {
