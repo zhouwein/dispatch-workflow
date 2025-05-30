@@ -124,10 +124,10 @@ export async function getWorkflowRuns(): Promise<WorkflowRun[]> {
       ...(branchName
         ? {
             branch: branchName,
-            per_page: 5
+            per_page: 100
           }
         : {
-            per_page: 10
+            per_page: 100
           })
     })
     status = response.status
@@ -140,7 +140,7 @@ export async function getWorkflowRuns(): Promise<WorkflowRun[]> {
       repo: config.repo,
       branch: branchName,
       event: DispatchMethod.RepositoryDispatch,
-      per_page: 5
+      per_page: 100
     })
     status = response.status
   }
