@@ -168,7 +168,9 @@ export function getBackoffOptions(config: ActionConfig): BackoffOptions {
   return {
     timeMultiple: config.timeMultiple,
     numOfAttempts: config.maxAttempts,
-    startingDelay: config.startingDelay
+    startingDelay: config.startingDelay,
+    jitter: "full",
+    retry: (e: any, attemptNumber: number) => { console.log(`Attempt ${attemptNumber}: got error ${e}`) ; return true;}
   }
 }
 
